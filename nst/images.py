@@ -7,7 +7,10 @@ import tensorflow as tf
 
 
 def load_img(img_path, max_dim):
-    img = tf.io.read_file(path.join("img", img_path))
+    try:
+        img = tf.io.read_file(path.join("img", img_path))
+    except tf.errors.NotFoundError:
+        raise FileNotFoundError(f"File '{img_path}' does not exist.")
     img = tf.image.decode_image(img, channels=3, dtype=tf.float32)
 
     shape = tf.shape(img)[:-1]
