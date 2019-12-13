@@ -1,5 +1,14 @@
 # Neural-Style-Transfer
-[Neural Style Transfer (NST)](https://arxiv.org/abs/1508.06576) extracts an art style from one picture (style picture) and applies it to another picture (content picture). 
+[Neural Style Transfer (NST)](https://arxiv.org/abs/1508.06576) extracts an art style from one picture (style picture) and applies it to another picture (content picture).  
+
+
+***
+![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl1.png)
+![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl2.png)
+![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl3.png)
+![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl4.png)
+
+***
 
 This repository allows to run NST and apply several settings without having to understand the machine learning techniques behind or digging into the code. 
 
