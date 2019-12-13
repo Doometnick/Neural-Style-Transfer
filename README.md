@@ -6,8 +6,8 @@
 ![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl1.png)
 ![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl2.png)
 ![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl3.png)
-![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl4.png)
-
+![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl4.png)  
+Image sources: [pexels](https://www.pexels.com/), [Google](https://storage.googleapis.com/download.tensorflow.org/example_images/Vassily_Kandinsky%2C_1913_-_Composition_7.jpg) 
 ***
 
 This repository allows to run NST and apply several settings without having to understand the machine learning techniques behind or digging into the code. 
