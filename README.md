@@ -3,6 +3,7 @@
 
 
 ***
+![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl5.png)
 ![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl1.png)
 ![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl2.png)
 ![](https://github.com/Doometnick/Neural-Style-Transfer/blob/master/samples/smpl3.png)
