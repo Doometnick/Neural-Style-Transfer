@@ -21,6 +21,12 @@ parser.add_argument("--max_img_dim", type=float, default=512.0,
                     help="Resize the image's longest dimension in pixels."
                     "The image aspect ratio will be kept. Note that this value should not "
                     "be larger than the maximum of the original's image dimensions.")
+parser.add_argument("--weight_content_loss", type=float, default=1e4,
+                    help="Contribution of content loss to total loss while training.")
+parser.add_argument("--weight_style_loss", type=float, default=1e-2,
+                    help="Contribution of style loss to total loss while training.")
+parser.add_argument("--weight_total_variation_loss", type=float, default=30,
+                    help="Contribution of total variation loss to total loss while training.")
 args = parser.parse_args()
 
 from model import Model
@@ -31,5 +37,8 @@ content_img = images.load_img(args.content_image, args.max_img_dim)
 
 model = Model(content_image=content_img,
               style_image=style_img,
-              learning_rate=args.learning_rate)
+              learning_rate=args.learning_rate,
+              style_weight=args.weight_style_loss,
+              content_weight=args.weight_content_loss,
+              total_variation_weight=args.weight_total_variation_loss)
 model.train(epochs=args.epochs)
