@@ -27,4 +27,6 @@ For example:
 `python nst img1.jpg style_image.jpg`  
 
 Both images have to be located in the *.img/* folder, the resulting images will be saved in the *img_stylized* folder.  
-See `python nst --help` for further details and optional parameters.
+See `python nst --help` for further details and optional parameters.  
+
+It is heavily recommended to run the example with an enabled GPU, since training on the CPU is significantly slower.
