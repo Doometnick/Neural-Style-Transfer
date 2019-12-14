@@ -1,3 +1,4 @@
+import json
 import tensorflow as tf
 from images import save_image
 
@@ -61,11 +62,17 @@ class Model:
                  content_weight=1e4,
                  style_weight=1e-2,
                  total_variation_weight=30,
-                 learning_rate=0.01):
+                 learning_rate=0.01, 
+                 layer_config="default"):
         self.content_img = content_image
         self.style_image = style_image
-        style_layers = ["block1_conv1", "block2_conv1", "block3_conv1", "block4_conv1", "block5_conv1"]
-        content_layers = ["block5_conv2"]
+
+        try:
+            layer_cfg= json.load(open("nst/config.json", "r"))
+            style_layers = layer_cfg[layer_config]["style_layers"]
+            content_layers = layer_cfg[layer_config]["content_layers"]
+        except KeyError:
+            print("Incorrect config names, check for typos.")
         
         self.content_weight = content_weight
         self.style_weight = style_weight

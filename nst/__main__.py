@@ -23,10 +23,13 @@ parser.add_argument("--max_img_dim", type=float, default=512.0,
                     "be larger than the maximum of the original's image dimensions.")
 parser.add_argument("--weight_content_loss", type=float, default=1e4,
                     help="Contribution of content loss to total loss while training.")
-parser.add_argument("--weight_style_loss", type=float, default=1e-2,
+parser.add_argument("--weight_style_loss", type=float, default=0.1,
                     help="Contribution of style loss to total loss while training.")
 parser.add_argument("--weight_total_variation_loss", type=float, default=30,
                     help="Contribution of total variation loss to total loss while training.")
+parser.add_argument("--config", type=str, default='default',
+                    help="Specifies which layers are used for style and content extraction. "
+                    "Can be found in 'config.json'.")
 args = parser.parse_args()
 
 from model import Model
@@ -40,5 +43,6 @@ model = Model(content_image=content_img,
               learning_rate=args.learning_rate,
               style_weight=args.weight_style_loss,
               content_weight=args.weight_content_loss,
-              total_variation_weight=args.weight_total_variation_loss)
+              total_variation_weight=args.weight_total_variation_loss,
+              layer_config=args.config)
 model.train(epochs=args.epochs)
