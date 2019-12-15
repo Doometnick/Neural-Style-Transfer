@@ -34,7 +34,8 @@ parser.add_argument("--config", type=str, default='default',
                     "Can be found in 'config.json'.")
 parser.add_argument("--reconstruct_image", type=bool, default=False,
                     help="If True, the stylized image is reconstructed from "
-                    "scratch instead of gradually changed from the content image.")
+                    "scratch instead of gradually changed from the content image. "
+                    "This takes significantly more training time for acceptable results.")
 args = parser.parse_args()
 
 from model import Model
