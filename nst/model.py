@@ -40,7 +40,6 @@ class StyleContentModel(tf.keras.models.Model):
         return {"content": content_results,
                 "style": style_results}
 
-
     def _get_vgg_model(self, layers):
         vgg = tf.keras.applications.VGG19(include_top=False, weights="imagenet")
         vgg.trainable = False
@@ -63,7 +62,8 @@ class Model:
                  style_weight=1e-2,
                  total_variation_weight=30,
                  learning_rate=0.01, 
-                 layer_config="default"):
+                 layer_config="default",
+                 reconstruct_image=False):
         self.content_img = content_image
         self.style_image = style_image
 
@@ -86,7 +86,11 @@ class Model:
         self.content_target = self.extractor(content_image)["content"]
 
         # Variable used for training
-        self.image = tf.Variable(content_image)
+        if reconstruct_image:
+            print("Reconstructing image from scratch.")
+            self.image = tf.Variable(tf.ones(content_image.shape))
+        else:
+            self.image = tf.Variable(content_image)
 
         self.optimizer = self.set_optimizer()
 
@@ -98,7 +102,7 @@ class Model:
         with tf.GradientTape() as tape:
             outputs = self.extractor(img)
             loss = self._style_content_loss(outputs["content"],
-                                      outputs["style"])
+                                            outputs["style"])
             loss += self.total_variation_weight * tf.image.total_variation(img)
 
         gradients = tape.gradient(loss, img)
@@ -114,6 +118,7 @@ class Model:
             print(f"Step {step}")
             if export_every_epoch is True:
                 save_image(self.image, f"img_{epoch + 1}.jpg")
+
     def _style_content_loss(self, content_outputs, style_outputs):
         # Calculate individual losses per layer and sum them up.
         content_loss = tf.add_n(
